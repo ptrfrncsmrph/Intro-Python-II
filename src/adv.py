@@ -53,6 +53,15 @@ player = Player("Pete", room["outside"])
 #
 # If the user enters "q", quit the game.
 
+current_room = player.room
+
 while True:
-    print(f"Current room: {player.get_room()}")
-    break
+    if current_room != player.room:
+        print(player.room)
+        current_room = player.room
+    current_room = player.room
+    direction = input("\nWhat direction would you like to go? (n/s/e/w)\n> ")
+    if direction == "q":
+        break
+    else:
+        player.move(direction)
