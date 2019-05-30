@@ -18,7 +18,7 @@ class Room:
         self.w_to = None
     def show_items(self):
         if self.items.__len__() == 0:
-            return "nothing"
+            return "no items"
         else:
             return ", ".join(list(map(lambda it: it.name, self.items)))
     def show_directions(self):

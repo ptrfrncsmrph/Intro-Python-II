@@ -62,7 +62,8 @@ player = Player("Pete", room["outside"])
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-valid_actions = ("drop", "take", "get")
+valid_item_actions = ("drop", "take", "get")
+
 
 def is_direction(str):
     """
@@ -73,11 +74,14 @@ def is_direction(str):
 def is_command(str):
     """
     Takes a string and returns true if it is a valid command
-    ('get' or 'take' followed by an item name). It does not
-    validate the item name.
+    ('get'/'take'/'drop followed by an item name, or 'i'/'inventory').
+    It does not validate the item name.
     """
     split_str = str.split(" ")
-    return split_str.__len__() == 2 and split_str[0] in valid_actions
+    if split_str.__len__() == 2:
+        return split_str[0] in valid_item_actions
+    else:
+        return str in ("i", "inventory")
 
 print(player.room)
 current_room = player.room
